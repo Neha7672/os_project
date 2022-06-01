@@ -1,0 +1,86 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>ADOPTION</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+</head>
+<body>
+    <section class="adopt">
+        <div class="sub-adopt">
+            
+            <h2> Why you should adopt animals???</h2>
+            <ul >
+                <li>Saving a life feels good.</li>
+                <li>You'll get a beautiful and good companion.</li>
+                <li>You'll help fight animal cruelty.</li>
+                <li>You'll get a lifelong support system.</li>
+                <li>You'll adopt an animal who has received good care.</li>
+            </ul>
+        </div>
+        <div class="points">
+            <p> 
+               <b> If You Want To Adopt Small animals,Then<br><br>
+                Please Enter Your Details Here...</b>
+            </p>
+            <br><br>
+            <form method="post" id="adoptform">
+                <input type="email" placeholder="Enter your email id" required="required" id="email" name="email"><br>
+                <input type="password" placeholder="Enter password" required="required" id="pass" name="pass"><br>
+                <input type="integer" placeholder="Enter your phone number" required="required" id="phoneno" name="phone" ><br>
+                <input type="textarea rows=20" placeholder="Enter your address" required="required" id="address" name="address"><br>
+                <b>Choose animal:</b>&nbsp;
+                <input type="radio" name="ani" value="Dog" class="animal" id="animal" required="required">Dog
+                <input type="radio" name="ani" value="Cat" class="animal" id="animal" required="required">Cat<br>
+                <input type="submit" value="SUBMIT" id="submit"><br>
+            
+            </form>
+        </div>
+    </section>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+        import { getDatabase, ref, set, get, child} from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCDQys5iCvdh5TdWO0-5Q1oBZiKhjJkTBQ",
+          authDomain: "os-project-a9258.firebaseapp.com",
+          databaseURL: "https://os-project-a9258-default-rtdb.firebaseio.com",
+          projectId: "os-project-a9258",
+          storageBucket: "os-project-a9258.appspot.com",
+          messagingSenderId: "340238015419",
+          appId: "1:340238015419:web:07c46995a96c7bc71d429e",
+          measurementId: "G-PEXPTSRTK2"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        document.getElementById('adoptform').addEventListener('submit', function(e) {
+        e.preventDefault();
+        set(ref( db, 'users/' + Math.random().toString(36).slice(2, 7)), {
+        email: document.getElementById('email').value,
+        pass: document.getElementById('pass').value,
+        phone: document.getElementById('phoneno').value,
+        address: document.getElementById('address').value,
+        ani: document.getElementById('animal').value
+        });
+
+        alert('Your form is submitted');
+        document.getElementById('adoptform').reset();
+});
+    </script>
+
+    
+</body>
+</html>
+
+
+
+

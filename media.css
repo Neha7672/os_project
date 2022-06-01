@@ -1,0 +1,57 @@
+@media(max-width:1214px){
+    .adopt,.consult,.contact{
+        height:150vh;
+    }
+    .donate{
+        height:175vh;
+    }
+    nav ul li a{
+        display:block;
+    }
+    .sub-adopt, .sub-donate{
+        width:100%;
+        
+    }
+    .sub-adopt h2,.sub-donate h1{
+        text-align:center;
+        padding-left:70px;
+    }
+    .sub-adopt ul li,.sub-donate ul li {
+        padding-left:70px;
+    }
+    .points, .pay,.a,.b,.c,.contactinfo,.contactform{
+        width:100%;
+        
+    }
+    .points p{
+        padding-top:130px;
+    }
+    input{
+        width:200px;
+    }
+    input.num,input.date,input.cvv{
+        width:200px;
+    }
+    .contactinfo,.contactform{
+        padding:15px;
+    }
+    .contactform h2 {
+        font-size:20px;
+    }
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

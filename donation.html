@@ -1,0 +1,99 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DONATION</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+</head>
+<body>
+    <section class="donate">
+            <div class="sub-donate">
+                <h1> Why you should donate to animal charities??</h1>
+                <ul>
+                    <li> Helping the planet</li>
+                    <li> Poverty can be reduced</li>
+                    <li> Helping the poor</li>
+                    <li> Provides a chance to create a better world</li>
+                    <li> Spread Justice</li>
+                </ul>
+            </div>
+            <div class="pay">
+                <p>
+                  <b> If You Want to Donate ,Then<br>
+                    Please Fill The  Details Here...<br></b>
+                </p>
+                <form  method="post" id="donationform">
+                    <input type="text" placeholder="Enter your name" required="required" name="name" id="name"><br>
+                    <input type="integer" placeholder="Enter your phone number" required="required" name="phoneno" id="phone"><br>
+                    <b> Choose Payment Method:</b><br>
+                    <input type="radio" name="pay" value="Credit Card" class="red" id="ment" required="required">Credit Card
+                    <input type="radio" name="pay" value="Debit Card" class="red" id="ment" required="required">Debit Card
+                    <input type="radio" name="pay" value="Paypal" class="red" id="ment" required="required">Paypal<br>
+
+                    <b>Type</b><br><select class="sel">
+                        <option value="Select" name="card" id="card">Select</option>
+                        <option value="Visa" name="card" id="card">Visa</option>
+                        <option value="Master Card" name="card" id="card">Master Card</option>
+                    </select><br>
+
+                    <b>Card Number:</b>&nbsp;
+                    <input type="integer"  placeholder="Enter card number" class="num"required="required" name="cardno" id="cardno"><br>
+                    <b>Name:</b>&nbsp;
+                    <input type="text" placeholder="Enter your name" required="required" name="cardname" id="cardname"><br>
+                     
+                    <b>Expiry Date:</b>&nbsp;
+                    <input type="datetime" placeholder="mm-yyyy" class="date"required="required" name="expiry" id="expiry"><br>
+
+                    <b>Enter CVV:</b>&nbsp;
+                    <input type="password" placeholder="Enter CVV" class="cvv"required="required" name="cvv" id="cvv"><br>
+
+                    <input type="Submit" value="SUBMIT" id="submit">
+
+                </form>
+            </div>
+    </section>
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+  import { getDatabase,ref,set,get,child } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+    apiKey: "AIzaSyC03hEBtwS_91MVbVa3ul1e-Kw8bJgK3WM",
+    authDomain: "donation-form-fb41e.firebaseapp.com",
+    databaseURL: "https://donation-form-fb41e-default-rtdb.firebaseio.com",
+    projectId: "donation-form-fb41e",
+    storageBucket: "donation-form-fb41e.appspot.com",
+    messagingSenderId: "837428610782",
+    appId: "1:837428610782:web:0b911a7f0951907a0a644f",
+    measurementId: "G-MR7NTN20BY"
+  };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const donationdb = getDatabase(app);
+
+        document.getElementById('donationform').addEventListener('submit', function(e) {
+        e.preventDefault();
+        set(ref(donationdb, 'users/' + Math.random().toString(36).slice(2, 9)), {
+        name: document.getElementById('email').value,
+        phone: document.getElementById('phoneno').value,
+        pay: document.getElementById('ment').value,
+        card: document.getElementById('card').value,
+        cardno: document.getElementById('cardno').value,
+        cardname: document.getElementById('cardname').value,
+        expiry: document.getElementById('expiry').value,
+        cvv: document.getElementById('cvv').value
+        });
+
+        alert('Your form is submitted');
+        document.getElementById('donationform').reset();
+        });
+    </script> 
+</body>
+</html>

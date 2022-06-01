@@ -1,0 +1,85 @@
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACT </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+    <script src="https://kit.fontawesome.com/209adb0983.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="contact">
+    <h2><b>Contact Us</b></h2>
+        <div class="container">
+            <div class="contactinfo">
+                <div class="box">
+                    <div class="icon">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <div class="text">
+                        <h3>Email Id: </h3>
+                        <p> nehagrg7672@gmail.com</p>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="text">
+                        <h3>Phone No.:</h3>
+                        <p>123-456-789</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contactform">
+            <h2> SEND MESSAGE </h2>
+            <form method="post" id="contactform">
+                <input type="text" placeholder="Enter name" required="required" name="sname" id="sname" ><br>
+                <input type="email" placeholder="Enter Email Id" required="required" name="mail" id="mail"><br>
+                <input type="textarea" placeholder="Enter message"required="required" name="msg" id="msg"><br>
+                <input type="submit" value="SUBMIT" id="submit">
+
+            </form>
+        </div>
+    </section>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js";
+        import { getDatabase,ref,set,get,child } from "https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDXhBjwk2hvuUKAfVEXMV93TlghB4tSSeE",
+          authDomain: "contact-form-bc46c.firebaseapp.com",
+          databaseURL: "https://contact-form-bc46c-default-rtdb.firebaseio.com",
+          projectId: "contact-form-bc46c",
+          storageBucket: "contact-form-bc46c.appspot.com",
+          messagingSenderId: "661369501462",
+          appId: "1:661369501462:web:8aab8f30789fcb55390237",
+          measurementId: "G-XJLM24L8ES"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        document.getElementById('contactform').addEventListener('submit', function(e) {
+        e.preventDefault();
+        set(ref( db, 'users/' + Math.random().toString(36).slice(2, 7)), {
+        sname: document.getElementById('sname').value,
+        mail: document.getElementById('mail').value,
+        msg: document.getElementById('msg').value
+        });
+
+        alert('Your form is submitted');
+        document.getElementById('contactform').reset();
+});
+      </script>
+    
+</body>
+</html>
